@@ -101,4 +101,25 @@ defmodule TodoList.Todos do
   def change_item(%Item{} = item, attrs \\ %{}) do
     Item.changeset(item, attrs)
   end
+
+
+
+  def toggle(%Item{completed_at: nil} = item) do
+    update_item(item, %{completed_at: DateTime.utc_now()})
+  end
+  def toggle(%Item{} = item) do
+    update_item(item, %{completed_at: nil})
+  end
+
+
+  def toggle_item_by_id(todo_item_id) when is_binary(todo_item_id) or is_integer(todo_item_id) do
+    case Repo.get!(Item, todo_item_id) do
+      nil ->
+        {:ok, nil}
+      %Item{} = item ->
+        toggle(item)
+    end
+  end
+
+
 end
