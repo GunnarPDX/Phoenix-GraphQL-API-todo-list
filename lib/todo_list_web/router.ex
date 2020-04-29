@@ -11,6 +11,7 @@ defmodule TodoListWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug CORSPlug
   end
 
   scope "/", TodoListWeb do
@@ -25,6 +26,7 @@ defmodule TodoListWeb.Router do
 
     get "/", Absinthe.Plug.GraphiQL, schema: TodoListWeb.Api.Schema, interface: :playground
     post "/", Absinthe.Plug, schema: TodoListWeb.Api.Schema
+    options "/", Absinthe.Plug.GraphiQL, schema: TodoListWeb.Api.Schema
 
   end
 
