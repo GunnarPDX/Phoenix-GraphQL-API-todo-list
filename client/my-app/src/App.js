@@ -9,10 +9,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
 
-      <div>
-        Hello
-      </div>
-
       <TodoList/>
 
     </ApolloProvider>

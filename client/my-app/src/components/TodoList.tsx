@@ -1,3 +1,4 @@
+import '../App.css'
 import React from "react";
 import {gql} from "apollo-boost"
 import {useQuery} from "@apollo/react-hooks"
@@ -23,11 +24,11 @@ const TodoList = () => {
     }
     `);
 
-    return <div>
-        <h3> Todo Items</h3>
+    return <div className={"todo-list"}>
+        <h1> Todo Items</h1>
         <ul>
             {data?.todoItems ? data.todoItems.map(item => (
-                <li key={item.id} className={item.isCompleted ? "completed" : ""}>
+                <li key={item.id} className={ item.isCompleted ? "completed" : ""}>
                     {item.content}
                 </li>
             )) : null}

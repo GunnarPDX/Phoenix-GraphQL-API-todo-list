@@ -10,6 +10,12 @@ use Mix.Config
 config :todo_list,
   ecto_repos: [TodoList.Repo]
 
+# Configure CORS
+config :cors_plug,
+       origin: ["http://localhost:3000"],
+       max_age: 86400,
+       methods: ["GET", "POST"]
+
 # Configures the endpoint
 config :todo_list, TodoListWeb.Endpoint,
   url: [host: "localhost"],
